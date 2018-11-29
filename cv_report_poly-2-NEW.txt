@@ -1,0 +1,457 @@
+Fold  1 ... 
+
+........ 
+
+........ 
+
+........ 
+
+
+
+
+Benign vs rest... 
+
+Number of support vectors:  5384
+Size of training set:  8012
+Ratio:  0.671992011982027
+[[-0.6223396  -0.6223396  -0.6223396  ...  2.54349206  0.9381128
+   1.67784843]]
+          Predicted 1  Predicted 2
+Actual 1         1130          494
+Actual 2           84          295
+              precision    recall  f1-score   support
+
+         ben       0.93      0.70      0.80      1624
+         not       0.37      0.78      0.51       379
+
+   micro avg       0.71      0.71      0.71      2003
+   macro avg       0.65      0.74      0.65      2003
+weighted avg       0.83      0.71      0.74      2003
+
+Mel vs rest... 
+
+Number of support vectors:  5133
+Size of training set:  8012
+Ratio:  0.640664003994009
+[[-0.22095666 -2.75991431 -4.49607183 ...  0.56256144  0.56256144
+   0.56256144]]
+          Predicted 1  Predicted 2
+Actual 1          163           59
+Actual 2          486         1295
+              precision    recall  f1-score   support
+
+         mel       0.25      0.73      0.37       222
+         not       0.96      0.73      0.83      1781
+
+   micro avg       0.73      0.73      0.73      2003
+   macro avg       0.60      0.73      0.60      2003
+weighted avg       0.88      0.73      0.78      2003
+
+AB vs rest... 
+
+Number of support vectors:  3783
+Size of training set:  8012
+Ratio:  0.4721667498751872
+[[-5.85672515 -5.85672515 -5.85672515 ...  0.54667031  0.54667031
+   0.54667031]]
+          Predicted 1  Predicted 2
+Actual 1          127           30
+Actual 2          348         1498
+              precision    recall  f1-score   support
+
+          ab       0.27      0.81      0.40       157
+         not       0.98      0.81      0.89      1846
+
+   micro avg       0.81      0.81      0.81      2003
+   macro avg       0.62      0.81      0.64      2003
+weighted avg       0.92      0.81      0.85      2003
+
+Multiclass RBF... 
+
+Number of support vectors:  6030
+Size of training set:  8012
+Ratio:  0.752621068397404
+          Predicted 1  Predicted 2  Predicted 3
+Actual 1          121           17           19
+Actual 2          257         1007          360
+Actual 3           40           45          137
+              precision    recall  f1-score   support
+
+          ab       0.29      0.77      0.42       157
+         ben       0.94      0.62      0.75      1624
+         mel       0.27      0.62      0.37       222
+
+   micro avg       0.63      0.63      0.63      2003
+   macro avg       0.50      0.67      0.51      2003
+weighted avg       0.82      0.63      0.68      2003
+
+Fold  2 ... 
+
+........ 
+
+........ 
+
+........ 
+
+
+
+
+Benign vs rest... 
+
+Number of support vectors:  5385
+Size of training set:  8012
+Ratio:  0.6721168247628557
+[[-0.6197401  -0.6197401  -0.6197401  ...  2.5878553   2.5878553
+   1.96291994]]
+          Predicted 1  Predicted 2
+Actual 1         1093          504
+Actual 2           99          307
+              precision    recall  f1-score   support
+
+         ben       0.92      0.68      0.78      1597
+         not       0.38      0.76      0.50       406
+
+   micro avg       0.70      0.70      0.70      2003
+   macro avg       0.65      0.72      0.64      2003
+weighted avg       0.81      0.70      0.73      2003
+
+Mel vs rest... 
+
+Number of support vectors:  5147
+Size of training set:  8012
+Ratio:  0.6424113829256116
+[[-4.56264237 -2.78258859 -4.56264237 ...  0.56153631  0.56153631
+   0.56153631]]
+          Predicted 1  Predicted 2
+Actual 1          171           64
+Actual 2          481         1287
+              precision    recall  f1-score   support
+
+         mel       0.26      0.73      0.39       235
+         not       0.95      0.73      0.83      1768
+
+   micro avg       0.73      0.73      0.73      2003
+   macro avg       0.61      0.73      0.61      2003
+weighted avg       0.87      0.73      0.77      2003
+
+AB vs rest... 
+
+Number of support vectors:  3818
+Size of training set:  8012
+Ratio:  0.4765351972041937
+[[-5.97910448 -2.72470598 -5.97910448 ...  0.54562789  0.54562789
+   0.54562789]]
+          Predicted 1  Predicted 2
+Actual 1          141           30
+Actual 2          357         1475
+              precision    recall  f1-score   support
+
+          ab       0.28      0.82      0.42       171
+         not       0.98      0.81      0.88      1832
+
+   micro avg       0.81      0.81      0.81      2003
+   macro avg       0.63      0.81      0.65      2003
+weighted avg       0.92      0.81      0.84      2003
+
+Multiclass RBF... 
+
+Number of support vectors:  6054
+Size of training set:  8012
+Ratio:  0.7556165751372941
+          Predicted 1  Predicted 2  Predicted 3
+Actual 1          135           19           17
+Actual 2          255          984          358
+Actual 3           52           46          137
+              precision    recall  f1-score   support
+
+          ab       0.31      0.79      0.44       171
+         ben       0.94      0.62      0.74      1597
+         mel       0.27      0.58      0.37       235
+
+   micro avg       0.63      0.63      0.63      2003
+   macro avg       0.50      0.66      0.52      2003
+weighted avg       0.81      0.63      0.67      2003
+
+Fold  3 ... 
+
+........ 
+
+........ 
+
+........ 
+
+
+
+
+Benign vs rest... 
+
+Number of support vectors:  5390
+Size of training set:  8012
+Ratio:  0.6727408886669995
+[[-0.62031589 -0.62031589 -0.62031589 ...  2.57786358  2.57786358
+   2.57786358]]
+          Predicted 1  Predicted 2
+Actual 1         1137          466
+Actual 2           98          302
+              precision    recall  f1-score   support
+
+         ben       0.92      0.71      0.80      1603
+         not       0.39      0.76      0.52       400
+
+   micro avg       0.72      0.72      0.72      2003
+   macro avg       0.66      0.73      0.66      2003
+weighted avg       0.82      0.72      0.74      2003
+
+Mel vs rest... 
+
+Number of support vectors:  5115
+Size of training set:  8012
+Ratio:  0.6384173739390914
+[[-4.52655367 -4.52655367 -4.52655367 ...  0.56208783  0.56208783
+   0.56208783]]
+          Predicted 1  Predicted 2
+Actual 1          165           63
+Actual 2          457         1318
+              precision    recall  f1-score   support
+
+         mel       0.27      0.72      0.39       228
+         not       0.95      0.74      0.84      1775
+
+   micro avg       0.74      0.74      0.74      2003
+   macro avg       0.61      0.73      0.61      2003
+weighted avg       0.88      0.74      0.78      2003
+
+AB vs rest... 
+
+Number of support vectors:  3791
+Size of training set:  8012
+Ratio:  0.47316525212181726
+[[-5.98804185 -5.98804185 -5.98804185 ...  0.54555359  0.54555359
+   0.54555359]]
+          Predicted 1  Predicted 2
+Actual 1          140           32
+Actual 2          332         1499
+              precision    recall  f1-score   support
+
+          ab       0.30      0.81      0.43       172
+         not       0.98      0.82      0.89      1831
+
+   micro avg       0.82      0.82      0.82      2003
+   macro avg       0.64      0.82      0.66      2003
+weighted avg       0.92      0.82      0.85      2003
+
+Multiclass RBF... 
+
+Number of support vectors:  6038
+Size of training set:  8012
+Ratio:  0.753619570644034
+          Predicted 1  Predicted 2  Predicted 3
+Actual 1          134           23           15
+Actual 2          242         1024          337
+Actual 3           39           46          143
+              precision    recall  f1-score   support
+
+          ab       0.32      0.78      0.46       172
+         ben       0.94      0.64      0.76      1603
+         mel       0.29      0.63      0.40       228
+
+   micro avg       0.65      0.65      0.65      2003
+   macro avg       0.52      0.68      0.54      2003
+weighted avg       0.81      0.65      0.69      2003
+
+Fold  4 ... 
+
+........ 
+
+........ 
+
+........ 
+
+
+
+
+Benign vs rest... 
+
+Number of support vectors:  5384
+Size of training set:  8012
+Ratio:  0.671992011982027
+[[-0.61868726 -0.61868726 -0.61868726 ...  2.41631793  2.60637606
+   2.60637606]]
+          Predicted 1  Predicted 2
+Actual 1         1121          465
+Actual 2           87          330
+              precision    recall  f1-score   support
+
+         ben       0.93      0.71      0.80      1586
+         not       0.42      0.79      0.54       417
+
+   micro avg       0.72      0.72      0.72      2003
+   macro avg       0.67      0.75      0.67      2003
+weighted avg       0.82      0.72      0.75      2003
+
+Mel vs rest... 
+
+Number of support vectors:  5105
+Size of training set:  8012
+Ratio:  0.6371692461308038
+[[-2.13259471 -4.62053057 -4.62053057 ...  0.5606718   0.5606718
+   0.5606718 ]]
+          Predicted 1  Predicted 2
+Actual 1          176           70
+Actual 2          437         1320
+              precision    recall  f1-score   support
+
+         mel       0.29      0.72      0.41       246
+         not       0.95      0.75      0.84      1757
+
+   micro avg       0.75      0.75      0.75      2003
+   macro avg       0.62      0.73      0.62      2003
+weighted avg       0.87      0.75      0.79      2003
+
+AB vs rest... 
+
+Number of support vectors:  3881
+Size of training set:  8012
+Ratio:  0.4843984023964054
+[[-5.97910448 -5.97910448 -5.97910448 ...  0.54562789  0.54562789
+   0.54562789]]
+          Predicted 1  Predicted 2
+Actual 1          151           20
+Actual 2          346         1486
+              precision    recall  f1-score   support
+
+          ab       0.30      0.88      0.45       171
+         not       0.99      0.81      0.89      1832
+
+   micro avg       0.82      0.82      0.82      2003
+   macro avg       0.65      0.85      0.67      2003
+weighted avg       0.93      0.82      0.85      2003
+
+Multiclass RBF... 
+
+Number of support vectors:  6052
+Size of training set:  8012
+Ratio:  0.7553669495756365
+          Predicted 1  Predicted 2  Predicted 3
+Actual 1          142           14           15
+Actual 2          257         1002          327
+Actual 3           43           49          154
+              precision    recall  f1-score   support
+
+          ab       0.32      0.83      0.46       171
+         ben       0.94      0.63      0.76      1586
+         mel       0.31      0.63      0.42       246
+
+   micro avg       0.65      0.65      0.65      2003
+   macro avg       0.52      0.70      0.54      2003
+weighted avg       0.81      0.65      0.69      2003
+
+Fold  5 ... 
+
+........ 
+
+........ 
+
+........ 
+
+
+
+
+Benign vs rest... 
+
+Number of support vectors:  5319
+Size of training set:  8012
+Ratio:  0.6638791812281578
+[[-0.62098899 -0.62098899 -0.62098899 ...  2.56630365  2.56630365
+   2.34475441]]
+          Predicted 1  Predicted 2
+Actual 1         1102          508
+Actual 2          105          288
+              precision    recall  f1-score   support
+
+         ben       0.91      0.68      0.78      1610
+         not       0.36      0.73      0.48       393
+
+   micro avg       0.69      0.69      0.69      2003
+   macro avg       0.64      0.71      0.63      2003
+weighted avg       0.80      0.69      0.72      2003
+
+Mel vs rest... 
+
+Number of support vectors:  5124
+Size of training set:  8012
+Ratio:  0.6395406889665501
+[[-4.43141593 -4.43141593 -4.43141593 ...  0.56359032  0.56359032
+   0.56359032]]
+          Predicted 1  Predicted 2
+Actual 1          158           51
+Actual 2          503         1291
+              precision    recall  f1-score   support
+
+         mel       0.24      0.76      0.36       209
+         not       0.96      0.72      0.82      1794
+
+   micro avg       0.72      0.72      0.72      2003
+   macro avg       0.60      0.74      0.59      2003
+weighted avg       0.89      0.72      0.78      2003
+
+AB vs rest... 
+
+Number of support vectors:  3766
+Size of training set:  8012
+Ratio:  0.47004493260109836
+[[-6.09741248 -6.09741248 -0.19731648 ...  0.54466349  0.54466349
+   0.54466349]]
+          Predicted 1  Predicted 2
+Actual 1          148           36
+Actual 2          334         1485
+              precision    recall  f1-score   support
+
+          ab       0.31      0.80      0.44       184
+         not       0.98      0.82      0.89      1819
+
+   micro avg       0.82      0.82      0.82      2003
+   macro avg       0.64      0.81      0.67      2003
+weighted avg       0.91      0.82      0.85      2003
+
+Multiclass RBF... 
+
+Number of support vectors:  5981
+Size of training set:  8012
+Ratio:  0.7465052421367948
+          Predicted 1  Predicted 2  Predicted 3
+Actual 1          144           26           14
+Actual 2          243          986          381
+Actual 3           33           44          132
+              precision    recall  f1-score   support
+
+          ab       0.34      0.78      0.48       184
+         ben       0.93      0.61      0.74      1610
+         mel       0.25      0.63      0.36       209
+
+   micro avg       0.63      0.63      0.63      2003
+   macro avg       0.51      0.68      0.53      2003
+weighted avg       0.81      0.63      0.68      2003
+
+CV scores: 
+
+
+Ben vs not: 
+
+0.709435846230654
+
+Mel vs not: 
+
+0.7333000499251123
+
+AB vs not: 
+
+0.8137793310034948
+
+
+Multiclass: 
+
+0.6372441337993011
+
+
+Finished in   394.8696231842041  seconds
