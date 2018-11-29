@@ -1,8 +1,8 @@
 library(plyr, quietly=TRUE)
 library(dplyr, quietly=TRUE, warn.conflicts=FALSE)
 
-Rgb <- read.table("hmnist_8_8_RGB.csv", header=T, sep=",")
-meta <- read.table("HAM10000_metadata.csv", header=T, sep=",")
+Rgb <- read.table("data/hmnist_8_8_RGB.csv", header=T, sep=",")
+meta <- read.table("data/HAM10000_metadata.csv", header=T, sep=",")
 
 
 # Combine non-malignant groups and save as y
@@ -45,6 +45,14 @@ summary(classes$y)
 print("Scaling...")
 Rgb <- as.data.frame(scale(Rgb))
 
+# Make for ab vs mel
+Rgb.mVa <- Rgb[-which(y == 'ben'),]
+cl.mVa <- classes[-which(y =='ben'),]
+
+
+write.csv(Rgb.mVa, file="data/melVab.csv")
+write.csv(cl.mVa, file="data/cl_melVab.csv")
+
 # Expand smaller classes
 # print("Expanding...")
 # Rgb.exp <- Rgb %>%
@@ -76,7 +84,7 @@ Rgb <- as.data.frame(scale(Rgb))
 
 
 # write.table(classes, file="classes.txt", sep="\t")
-write.csv(classes, file="classes_3cl.csv")
+# write.csv(classes, file="classes_3cl.csv")
 
 # write.csv(Rgb.exp, file="SER_8_8_RGB.csv")
 # write.csv(classes.exp, file="classes_SER_8_8_RGB.csv")

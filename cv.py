@@ -5,23 +5,25 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report, confusion_matrix
 import time as time
+import pickle
 
-classes = pd.read_csv("classes_3cl.csv")
-fulldata = pd.read_csv("scaled_8_8_RGB.csv")
+classes = pd.read_csv("data/classes_3cl.csv")
+fulldata = pd.read_csv("data/scaled_8_8_RGB.csv")
 list1 = ["Actual 1", "Actual 2"]
 list2 = ["Predicted 1", "Predicted 2"]
+list3 = ["Actual 1", "Actual 2", "Actual 3"]
+list4 = ["Predicted 1", "Predicted 2", "Predicted 3"]
 X = fulldata.iloc()[:,1:].drop(['label'], axis=1)
 classes = classes.drop(classes.columns[0], axis=1)
 
-
-
-C_mel = 70.6780
-C_ben = 18.3646
-C_ab = 163.3178
+# C_mel = 70.6780
+# C_ben = 18.3646
+# C_ab = 163.3178
 
 ben_scores  = []
 mel_scores = []
 ab_scores = []
+multi_scores = []
 
 start_time = time.time()
 
@@ -43,15 +45,15 @@ for i in range(1,n+1):
     # print(cl_train.head())
 
     # Inflate training set
-    index = cl_train.index[cl_train['y'] != 'ben'].tolist()
-    cl_rep, X_rep = cl_train.loc[index,:], X_train.loc[index,:]
-    cl_train = pd.concat([cl_train, pd.concat([cl_rep]*3)])
-    X_train = pd.concat([X_train, pd.concat([X_rep]*3)])
+    # index = cl_train.index[cl_train['y'] != 'ben'].tolist()
+    # cl_rep, X_rep = cl_train.loc[index,:], X_train.loc[index,:]
+    # cl_train = pd.concat([cl_train, pd.concat([cl_rep]*3)])
+    # X_train = pd.concat([X_train, pd.concat([X_rep]*3)])
 
     # Ben vs rest
     print('Benign vs rest... \n')
     y_train, y_test = cl_train['ben'], cl_test['ben']
-    model = SVC(C=C_ben, kernel='rbf', gamma='auto')
+    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
@@ -59,6 +61,7 @@ for i in range(1,n+1):
     print('Size of training set: ', ltr)
     print('Ratio: ', nsv/ltr)
     print(model.dual_coef_)
+    ben_coef = model.dual_coef_
 
     model_pred = model.predict(X_test)
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
@@ -68,12 +71,15 @@ for i in range(1,n+1):
     # Mel vs rest
     print('Mel vs rest... \n')
     y_train, y_test = cl_train['mel'], cl_test['mel']
-    model = SVC(C=C_mel, kernel='rbf', gamma='auto')
+    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
-    print(nsv/ltr)
+    print('Number of support vectors: ', nsv)
+    print('Size of training set: ', ltr)
+    print('Ratio: ', nsv/ltr)
     print(model.dual_coef_)
+    mel_coef = model.dual_coef_
 
     model_pred = model.predict(X_test)
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
@@ -83,17 +89,46 @@ for i in range(1,n+1):
     # AB vs rest
     print('AB vs rest... \n')
     y_train, y_test = cl_train['ab'], cl_test['ab']
-    model = SVC(C=C_ab, kernel='rbf', gamma='auto')
+    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
-    print(nsv/ltr)
+    print('Number of support vectors: ', nsv)
+    print('Size of training set: ', ltr)
+    print('Ratio: ', nsv/ltr)
     print(model.dual_coef_)
+    ab_coef = model.dual_coef_
 
     model_pred = model.predict(X_test)
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
     print(classification_report(y_test, model_pred))
     ab_scores.append(model.score(X_test, y_test))
+
+    # Save alphas
+    filename = "data/alphas_run_" + str(i)
+    with open(filename, 'wb') as f:
+        pickle.dump(ben_coef, f)
+        pickle.dump(mel_coef, f)
+        pickle.dump(ab_coef, f)
+
+    # 3 class
+    print('Multiclass RBF... \n')
+    y_train, y_test = cl_train['y'], cl_test['y']
+    model = SVC(kernel='rbf', gamma='auto', class_weight = 'balanced')
+    model.fit(X_train, y_train)
+    nsv = sum(model.n_support_)
+    ltr = len(X_train)
+    print('Number of support vectors: ', nsv)
+    print('Size of training set: ', ltr)
+    print('Ratio: ', nsv/ltr)
+
+    model_pred = model.predict(X_test)
+    print(pd.DataFrame(confusion_matrix(y_test, model_pred), list3, list4))
+    print(classification_report(y_test, model_pred))
+    multi_scores.append(model.score(X_test, y_test))
+
+
+
 
 end_time = time.time()
 
@@ -102,6 +137,7 @@ end_time = time.time()
 ben_score = sum(ben_scores)/n
 mel_score = sum(mel_scores)/n
 ab_score = sum(ab_scores)/n
+multi_score = sum(multi_scores)/n
 
 print()
 print('CV scores: \n')
@@ -114,6 +150,10 @@ print(mel_score)
 print()
 print('AB vs not: \n')
 print(ab_score)
+print()
+print()
+print('Multiclass: \n')
+print(multi_score)
 print()
 print()
 run_time = end_time - start_time
