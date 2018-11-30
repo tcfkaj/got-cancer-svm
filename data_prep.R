@@ -44,14 +44,15 @@ summary(classes$y)
 # Scale data
 print("Scaling...")
 Rgb <- as.data.frame(scale(Rgb))
+summary(classes$y)
 
 # Make for ab vs mel
-Rgb.mVa <- Rgb[-which(y == 'ben'),]
-cl.mVa <- classes[-which(y =='ben'),]
+# Rgb.mVa <- Rgb[-which(y == 'ben'),]
+# cl.mVa <- classes[-which(y =='ben'),]
 
 
-write.csv(Rgb.mVa, file="data/melVab.csv")
-write.csv(cl.mVa, file="data/cl_melVab.csv")
+# write.csv(Rgb.mVa, file="data/melVab.csv")
+# write.csv(cl.mVa, file="data/cl_melVab.csv")
 
 # Expand smaller classes
 # print("Expanding...")

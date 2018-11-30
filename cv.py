@@ -19,11 +19,17 @@ classes = classes.drop(classes.columns[0], axis=1)
 # C_mel = 70.6780
 # C_ben = 18.3646
 # C_ab = 163.3178
+model = SVC(kernel='poly', degree=3, gamma='auto', class_weight='balanced')
 
 ben_scores  = []
 mel_scores = []
 ab_scores = []
 multi_scores = []
+ben_rats  = []
+mel_rats = []
+ab_rats = []
+multi_rats = []
+
 
 start_time = time.time()
 
@@ -53,7 +59,6 @@ for i in range(1,n+1):
     # Ben vs rest
     print('Benign vs rest... \n')
     y_train, y_test = cl_train['ben'], cl_test['ben']
-    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
@@ -67,11 +72,17 @@ for i in range(1,n+1):
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
     print(classification_report(y_test, model_pred))
     ben_scores.append(model.score(X_test, y_test))
+    ben_rats.append(nsv/ltr)
+
+    if i == 1:
+        ben_conf = confusion_matrix(y_test, model_pred)
+    else:
+        ben_conf += confusion_matrix(y_test, model_pred)
+
 
     # Mel vs rest
     print('Mel vs rest... \n')
     y_train, y_test = cl_train['mel'], cl_test['mel']
-    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
@@ -85,11 +96,16 @@ for i in range(1,n+1):
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
     print(classification_report(y_test, model_pred))
     mel_scores.append(model.score(X_test, y_test))
+    mel_rats.append(nsv/ltr)
+
+    if i == 1:
+        mel_conf = confusion_matrix(y_test, model_pred)
+    else:
+        mel_conf += confusion_matrix(y_test, model_pred)
 
     # AB vs rest
     print('AB vs rest... \n')
     y_train, y_test = cl_train['ab'], cl_test['ab']
-    model = SVC(kernel='rbf', gamma='auto', class_weight='balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
@@ -103,6 +119,14 @@ for i in range(1,n+1):
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list1, list2))
     print(classification_report(y_test, model_pred))
     ab_scores.append(model.score(X_test, y_test))
+    ab_rats.append(nsv/ltr)
+
+    if i == 1:
+        ab_conf = confusion_matrix(y_test, model_pred)
+    else:
+        ab_conf += confusion_matrix(y_test, model_pred)
+
+
 
     # Save alphas
     filename = "data/alphas_run_" + str(i)
@@ -114,7 +138,6 @@ for i in range(1,n+1):
     # 3 class
     print('Multiclass RBF... \n')
     y_train, y_test = cl_train['y'], cl_test['y']
-    model = SVC(kernel='rbf', gamma='auto', class_weight = 'balanced')
     model.fit(X_train, y_train)
     nsv = sum(model.n_support_)
     ltr = len(X_train)
@@ -126,7 +149,12 @@ for i in range(1,n+1):
     print(pd.DataFrame(confusion_matrix(y_test, model_pred), list3, list4))
     print(classification_report(y_test, model_pred))
     multi_scores.append(model.score(X_test, y_test))
+    multi_rats.append(nsv/ltr)
 
+    if i == 1:
+        multi_conf = confusion_matrix(y_test, model_pred)
+    else:
+        multi_conf += confusion_matrix(y_test, model_pred)
 
 
 
@@ -145,15 +173,38 @@ print()
 print('Ben vs not: \n')
 print(ben_score)
 print()
+print(ben_scores)
+print()
+print(ben_rats)
+print()
+print(ben_conf)
+print()
 print('Mel vs not: \n')
 print(mel_score)
+print()
+print(mel_scores)
+print()
+print(mel_rats)
+print()
+print(mel_conf)
 print()
 print('AB vs not: \n')
 print(ab_score)
 print()
+print(ab_scores)
+print()
+print(ab_rats)
+print()
+print(ab_conf)
 print()
 print('Multiclass: \n')
 print(multi_score)
+print()
+print(multi_scores)
+print()
+print(multi_rats)
+print()
+print(multi_conf)
 print()
 print()
 run_time = end_time - start_time
