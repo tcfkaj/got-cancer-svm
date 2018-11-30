@@ -1,6 +1,4 @@
-""" ML HW 5 """
-# import os
-# os.chdir(r'C:\Users\steven\Dropbox\UH Study\AAA Fall 2018\2. Topic-Data Clustering & ML\HW5 Project')
+""" Skin Cancer MNIST Project """
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
